@@ -1,0 +1,974 @@
+@charset 'utf-8';
+/* 1. 웹폰트 연결 */
+@import url('webfonts.css');
+
+/* 기본, 모바일 우선 */
+.main-section {
+  padding: 6.4rem 0;
+}
+
+/* 히어로 영역 */
+.main-section-visual, .main-section-cs {
+  padding: 0;
+}
+.main-section-visual {}
+.main-container {}
+.visual-container { /* 스와이퍼 영역 */
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  color: #fff;
+}
+.v-slide {
+ position: relative;
+}
+.v-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* object-position: right bottom; */
+}
+/* 비주얼 텍스트 */
+.v-txt{
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  z-index: 1;
+}
+.container, .container-s {
+  padding: 0.8rem;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+.txt {
+  font-size: 4.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+  opacity: 0;
+}
+.txt-s {
+  font-size: 2rem;
+  opacity: 0;
+}
+.animate .txt {
+  animation: mask-slogan-ani 6s both infinite;
+}
+.animate .txt-s{
+  animation: mask-slogan-s-ani 6s both infinite;
+}
+
+/* 스크롤 엠블럼 */
+.scroll {
+  position: absolute;
+  right: 1rem;
+  bottom: 10%;
+  width: 10rem;
+  height: 10rem;
+  z-index: 10;
+  overflow: hidden;
+}
+.emblem {
+  width: 100%;
+  height: 100%;
+  background: url('../images/scroll_down.svg') center center / contain no-repeat;
+  animation: rotate-ani 4s linear infinite;
+}
+.mouse {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2.2rem;
+  height: 4rem;
+  border-radius: 1.1rem;
+  transform: translate(-50%, -50%);
+}
+.mouse:before { /* 마우스 안쪽 도형 마스크 */
+  position: absolute;
+  inset: 0; /* left, top, right, bottom 모두 0, 너비와 높이를 100% 설계한 것과 동일 */
+  padding: 0.2rem;
+  border-radius: inherit;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,1) 50%, rgba(255,255,255,0.3) 51%);
+  background-size: auto 200%;
+  -webkit-mask: linear-gradient(#f00 0 0) content-box, linear-gradient(#f00 0 0);
+  mask: linear-gradient(#f00 0 0) content-box, linear-gradient(#f00 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  content: '';
+  animation: mouse-line-ani 1.2s alternate infinite;
+}
+.mouse:after { /* 동그라미 위아래 마이크로 모션 */
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  content: '';
+  background-color: #fff;
+  transform: translateX(-50%);
+  animation: mouse-dot-ani 1.2s;
+  animation-direction: alternate; /* 왕복 */
+  animation-iteration-count: infinite; /* 2회 반복하려면 반복회수 4*/
+}
+
+/* 애니메이션 */
+@keyframes mask-slogan-ani {
+  from {transform: translateY(100%); opacity: 0;}
+  25% {transform: translateY(0); opacity: 1;}
+  75% {transform: translateY(0); opacity: 1;}
+  to {transform: translateY(100%); opacity: 0;}
+}
+@keyframes mask-slogan-s-ani {
+  from {transform: translateY(100%); opacity: 0;}
+  25% {transform: translateY(100%); opacity: 0;}
+  50% {transform: translateY(0); opacity: 1;}
+  75% {transform: translateY(0); opacity: 1;}
+  to {transform: translateY(100%); opacity: 0;}
+}
+@keyframes rotate-ani {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+@keyframes mouse-dot-ani {
+  from {top: 15%; width: 0.6rem; height: 0.6rem; opacity: 0.3;}
+  to {top: 80%; width: 0.3rem; height: 0.3rem; opacity: 1;}
+}
+@keyframes mouse-line-ani {
+  from {background-position: 0 100%;}
+  to {background-position: 0 0;}
+}
+
+/* 스와이퍼 디자인 커스터마이징 */
+.main-section-visual .swiper-horizontal > .swiper-pagination-bullets, 
+.main-section-visual .swiper-pagination-bullets, 
+.main-section-visual .swiper-pagination-horizontal,
+.main-section-visual .swiper-pagination-custom, 
+.main-section-visual .swiper-pagination-fraction {
+  left: 1.5rem;
+  bottom: calc(50% + 1rem);
+  top: inherit;
+  width: auto;
+}
+.swiper-pagination-bullet {
+  background: var(--primary-color);
+  opacity: 0.3;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+.main-section-visual  .swiper-pagination-bullet {
+  background: #fff;
+  opacity: 1;
+}
+.swiper-pagination-bullet {
+  display: inline-block;
+  height: 1.2rem;
+  width: 1.2rem;
+  margin: 0.6rem !important;
+  border-radius: 0.6rem;
+  transition: 0.3s;
+}
+.swiper-pagination-bullet-active {
+  width: 6.4rem;
+}
+.swiper-button-next, .swiper-button-prev {
+  /* color: var(--primary-color); */
+  color: #fff;
+}
+.product-wrapper .swiper-button-next,
+.product-wrapper .swiper-button-prev {
+  transform: scale(0.8);
+}
+.product-wrapper .swiper-button-next {
+  transform-origin: right center;
+}
+.product-wrapper .swiper-button-prev {
+  transform-origin: left center;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: -5rem;
+}
+
+/* GRS 브랜드 소개영역 */
+.main-brand {
+  background-color: #222;
+  padding-top: 100px;
+}
+
+.brand-container {
+  display: block;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 상단 카피 문구 고정 (가장 상단 z-index) */
+.brand-copy {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 30px;
+  margin: 0;
+  padding: 40px 0 20px;
+  padding-bottom: 50px;
+  font-size: 2.5rem; 
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.4;
+  z-index: 100; /* 카드들보다 무조건 위 */
+}
+
+.highlight {
+  color: var(--primary-red);
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+
+/* 하단 카드 영역 */
+.brand-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 30vh;
+}
+
+.brand-card {
+  position: -webkit-sticky;
+  position: sticky; 
+  top: 18rem; 
+  width: 100%;
+  height: 45rem;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 -10px 20px rgba(0,0,0,0.3); /* 겹칠 때 경계 구분 */
+}
+
+.brand-card:nth-of-type(1) { z-index: 1; }
+.brand-card:nth-of-type(2) { z-index: 2; }
+.brand-card:nth-of-type(3) { z-index: 3; }
+.brand-card:nth-of-type(4) { z-index: 4; }
+.brand-card:nth-of-type(5) { z-index: 5; }
+
+.brand-card:before {
+  position: absolute;
+  display: block;
+  content: '';
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #000;
+  transition: opacity 0.3s ease;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.brand-card:hover:before {
+  opacity: 0;
+}
+
+/* 카드 내부 타이틀 */
+.card-title {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  transition: 0.8s;
+  z-index: 2;
+}
+
+.card-title p {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.card-white { background-image: url('../images/brand/brand_1.jpg');}
+.card-bg-1979 { background-image: url('../images/brand/brand_2.jpg'); }
+.card-bg-food { background-image: url('../images/brand/brand_3.jpg'); }
+.card-bg-green { background-image: url('../images/brand/brand_4.jpg'); }
+.card-bg-customer { background-image: url('../images/brand/brand_5.jpg'); }
+
+
+/* 소속 브랜드 영역 */
+.main-inner-brand {
+  height: auto;          /* main.css의 100vh 오버라이드 */
+  background-color: #fff;
+  padding: 0;
+  overflow: hidden;
+}
+
+.inner-brand-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;  /* .wrap 패딩 제거, 탭은 좌우 여백 별도 처리 */
+}
+
+/* ---- 탭 네비게이션 ---- */
+.ib-tab-nav {
+  width: 100%;
+}
+
+.ib-tab-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 10rem;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.ib-tab-list::-webkit-scrollbar { display: none; }
+
+.ib-tab-btn {
+  display: block;
+  padding: 1.2rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #999;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;      /* border-bottom이 nav 경계선과 겹치도록 */
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.ib-tab-item.active .ib-tab-btn {
+  color: var(--primary-red);
+  font-weight: 600;
+  border-bottom-color: var(--primary-red);
+}
+
+.ib-tab-btn:hover {
+  color: #111;
+  font-weight: 600;
+}
+
+/* ---- 패널 공통 ---- */
+.ib-panels {
+  width: 100%;
+  margin-bottom: 5rem;
+}
+
+.ib-panel {
+  display: none;
+}
+
+.ib-panel.active {
+  display: block;
+  animation: ib-fadein 0.4s ease forwards;
+}
+
+@keyframes ib-fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ---- 비주얼 영역 (로고 배경 + 음식 오버랩) ---- */
+.ib-visual {
+  position: relative;
+  width: 100%;
+  height: 36rem;            /* 모바일 높이 */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+/* 배경 로고 — 크게, 중앙 */
+.ib-bg-logo {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  pointer-events: none;
+}
+
+.ib-bg-logo img {
+  width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  opacity: 1;               /* 로고 원색 그대로 — 시안 참고 */
+  user-select: none;
+}
+
+/* 음식 이미지 — 로고 위 오버랩 */
+.ib-food-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22rem;
+  height: 22rem;
+}
+
+.ib-food-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 32px rgba(0,0,0,0.18));
+  animation: ib-food-up 0.5s ease-out both;
+}
+
+@keyframes ib-food-up {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ---- 설명 영역 ---- */
+.ib-desc {
+  padding: 3.2rem 2.4rem 5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.ib-tagline {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #111;
+  line-height: 1.6;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.ib-sub {
+  font-size: 1rem;
+  color: #aaa;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+/* 통계 한 줄 — 시안: "1,300+ 매장 수 | 7 개국 진출 국가 | 연간 고객 1억+" */
+.ib-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0;
+  margin: 0.8rem 0 0;
+  font-size: 1.3rem;
+  color: #111;
+}
+
+.stat-item {
+  white-space: nowrap;
+  padding: 0 0.8rem;
+}
+
+.stat-item strong {
+  color: var(--primary-red);
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.stat-sep {
+  color: #ccc;
+  font-weight: 300;
+}
+
+/* ---- 브랜드별 배경 로고 색 보정 ---- */
+/* 엔젤리너스*/
+[data-brand="angelinus"] .stat-item strong { color: #8b4d1a; }
+/* 크리스피크림 */
+[data-brand="krispy"] .stat-item strong { color: #1a814a; }
+/* 플레이팅 — 블랙 로고, 수치도 블랙 유지 */
+[data-brand="plating"] .stat-item strong { color: #111; }
+[data-brand="plating"] .ib-tab-item.active .ib-tab-btn { color: #111; border-bottom-color: #111; }
+/* 스텐브루 — 블루 계열 */
+[data-brand="stanbru"] .stat-item strong { color: #1d3ec8; }
+[data-brand="stanbru"] .ib-tab-item.active .ib-tab-btn { color: #1d3ec8; border-bottom-color: #1d3ec8; }
+
+
+/* ESG 섹션 */
+.main-esg {
+  padding: 0;
+  overflow: hidden;
+}
+
+.esg-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.esg-header {
+  display: none;
+}
+
+.esg-stack {
+  --esg-label-h: 12rem;
+  --esg-card-h: 70rem;
+
+  position: relative;
+  width: 100%;
+  height: calc((var(--esg-label-h) * 2) + var(--esg-card-h));
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.esg-card {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--esg-card-h);
+  padding: 3.2rem 2.4rem;
+  border-radius: 0 7rem 0 7rem;
+  background-color: #000;
+  overflow: hidden;
+  box-shadow: 0 -4px 16px rgba(255,255,255,0.16);
+  transition: top 0.45s ease;
+  cursor: pointer;
+}
+
+/* E 활성 */
+.esg-stack.state-e .esg-card[data-esg="e"] {
+  top: 0;
+}
+
+.esg-stack.state-e .esg-card[data-esg="s"] {
+  top: calc(var(--esg-card-h) - var(--esg-label-h));
+}
+
+.esg-stack.state-e .esg-card[data-esg="g"] {
+  top: var(--esg-card-h);
+}
+
+/* S 활성 */
+.esg-stack.state-s .esg-card[data-esg="e"] {
+  top: 0;
+}
+
+.esg-stack.state-s .esg-card[data-esg="s"] {
+  top: var(--esg-label-h);
+}
+
+.esg-stack.state-s .esg-card[data-esg="g"] {
+  top: var(--esg-card-h);
+}
+
+/* G 활성 */
+.esg-stack.state-g .esg-card[data-esg="e"] {
+  top: 0;
+}
+
+.esg-stack.state-g .esg-card[data-esg="s"] {
+  top: var(--esg-label-h);
+}
+
+.esg-stack.state-g .esg-card[data-esg="g"] {
+  top: calc(var(--esg-label-h) * 2);
+}
+
+.esg-card-label {
+  position: relative;
+  z-index: 3;
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.esg-card.active .esg-card-label {
+  color: var(--primary-red);
+}
+
+.esg-card-label::first-letter {
+  font-size: 1.4em;
+}
+
+.esg-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin-top: 3rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.esg-card.active .esg-card-inner {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.esg-img-wrap {
+  width: 100%;
+  height: 22rem;
+  border-radius: 1.2rem;
+  overflow: hidden;
+}
+
+.esg-img-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.esg-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  color: #fff;
+}
+
+.esg-content-tag {
+  margin: 0;
+  color: var(--primary-red);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.esg-figures {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.esg-figure {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.esg-figure p {
+  color: var(--primary-red);
+  font-size: 1rem;
+  font-weight: 900;
+}
+.esg-num {
+  color: var(--primary-red);
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.esg-fig-label {
+  color: #aaa;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.esg-body {
+  margin: 0;
+  color: #aaa;
+  font-size: 1.3rem;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+  [ CSS ] News 섹션
+  ============================================================ */
+ 
+/* ---- 섹션 기본 ---- */
+.main-news {
+  padding: 10rem 0;
+}
+ 
+.news-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+ 
+/* ---- 좌측: 타이틀 + 필터 ---- */
+.news-aside {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 2rem;
+}
+ 
+.news-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+ 
+/* ---- 필터 리스트 ---- */
+.news-filter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.8rem 2rem;
+}
+ 
+.news-filter-btn {
+  padding: 0;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  letter-spacing: -0.01em;
+}
+ 
+.news-filter-item.active .news-filter-btn {
+  color: var(--primary-red);
+  font-weight: 700;
+}
+ 
+.news-filter-btn:hover {
+  color: #222;
+}
+ 
+/* ---- 뉴스 카드 그리드 / 모바일 스와이퍼 ---- */
+.news-grid {
+  /* display: block; */
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.news-grid .swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+ 
+/* 슬라이드 너비: 한 장씩 보이되 옆 카드 살짝 노출 */
+.news-grid .swiper-slide {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 400px;
+}
+ 
+/* ---- 이전/다음 버튼 ---- */
+.news-swiper-nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.6rem;
+  width: 100%;
+  /* max-width: 100%; */
+  margin: 0 auto 1.6rem;
+}
+ 
+.news-swiper-prev,
+.news-swiper-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 4rem;
+  color: #222;
+  font-size: 2rem;
+}
+ 
+.news-swiper-prev:hover,
+.news-swiper-next:hover {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+}
+ 
+.news-swiper-prev.swiper-button-disabled,
+.news-swiper-next.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ---- 카드 ---- */
+.news-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.news-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+}
+ 
+.news-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+ 
+.news-card-link:hover .news-thumb img {
+  transform: scale(1.05);
+}
+ 
+.news-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+ 
+.news-category {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #888;
+  letter-spacing: 0.02em;
+}
+ 
+.news-date {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+ 
+.news-ttl {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+  line-height: 1.4;
+  /* word-break: keep-all; */
+  transition: color 0.2s ease;
+}
+ 
+.news-card-link:hover .news-ttl {
+  color: var(--primary-red);
+}
+
+/* ============================================================
+  [ CSS ] Contact 섹션
+  ============================================================ */
+ 
+.main-contact {
+  background-color: #000;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.contact-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 8rem 2rem;
+}
+ 
+/* ---- 타이틀 라인 ---- */
+.contact-title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+ 
+.contact-word {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: -0.03em;
+  color: #fff;
+  flex-shrink: 0;
+}
+ 
+/* 활성 후 CONTACT 레드 */
+.main-contact.map-active .contact-word--left {
+  color: var(--primary-red);
+  transition: color 0.4s ease 0.2s;
+}
+ 
+/* ---- 구글맵 래퍼 ---- */
+.contact-map-wrap {
+  width: 0;
+  overflow: hidden;
+  border-radius: 0;
+  flex-shrink: 0;
+  transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  height: clamp(5rem, 16vw, 16rem);
+  margin: 0;
+}
+ 
+/* 맵 활성 상태 */
+.main-contact.map-active .contact-map-wrap {
+  width: clamp(11rem, 25vw, 34rem);
+  margin: 0 1.5vw;
+}
+ 
+.contact-map {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  pointer-events: none; /* 섹션 스크롤 방해 방지 */
+  opacity: 0;
+  transition: opacity 0.4s ease 0.6s;
+}
+ 
+.main-contact.map-active .contact-map {
+  opacity: 1;
+  pointer-events: auto;
+}
+ 
+/* ---- CTA 버튼 ---- */
+.contact-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+ 
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 0.2rem 1.5rem;
+  background-color: var(--primary-red);
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  transition: background-color 0.2s ease;
+}
+ 
+.contact-btn:hover {
+  background-color: #c00;
+}
+ 
+.btn-txt {
+  flex-shrink: 0;
+}
+ 
+/* 화살표 영역 */
+.contact-btn .btn-arrow::before {
+  transition: transform 0.25s ease;
+}
+
+.contact-btn:hover .btn-arrow::before {
+  transform: translateX(1rem);
+}

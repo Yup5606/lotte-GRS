@@ -1,0 +1,92 @@
+@charset 'utf-8';
+
+.coming-sec {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 12rem 2rem 6rem;
+  text-align: center;
+  background-color: #000;
+}
+
+.coming-inner {
+  max-width: 60rem;
+}
+
+.coming-en {
+  margin-bottom: 1.6rem;
+  color: var(--primary-red);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.coming-sec h2 {
+  margin-bottom: 2rem;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.coming-desc {
+  margin-bottom: 4rem;
+  color: #dddddd;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+/* 1. mo tiny */
+@media screen and (max-width: 360px) {
+  .coming-sec h2 {
+    font-size: 2.6rem;
+  }
+}
+
+/* 2. mo */
+@media screen and (max-width: 767px) {}
+
+/* 3. tb~ */
+@media screen and (min-width: 768px) {
+  .coming-sec {
+    padding: 12rem 3rem 8rem;
+  }
+
+  .coming-en {
+    font-size: 1.5rem;
+  }
+
+  .coming-sec h2 {
+    font-size: 4.4rem;
+  }
+
+  .coming-desc {
+    font-size: 1.8rem;
+  }
+
+  .coming-btn {
+    min-width: 15rem;
+    height: 5.4rem;
+    border-radius: 2.7rem;
+    font-size: 1.6rem;
+  }
+}
+
+/* 4. only tb */
+@media screen and (min-width: 768px) and (max-width: 1279px) {}
+
+/* 5. laptop 1280~ */
+@media screen and (min-width: 1280px) {
+  .coming-sec {
+    padding: 14rem 6rem 10rem;
+  }
+
+  .coming-sec h2 {
+    font-size: 5.6rem;
+  }
+
+  .coming-desc {
+    margin-bottom: 4rem;
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,229 @@
+@charset 'utf-8';
+
+/* 1. mo tiny (360px 이하) */
+@media screen and (max-width: 360px) {
+  html { font-size: 8px; }
+}
+
+/* 2. mo (767px 이하) */
+@media screen and (max-width: 767px) {}
+
+/* 3. tb~ (768px 이상) */
+@media screen and (min-width: 768px) {
+  .wrap {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+  }
+  .logo {
+    width: 16rem;
+  }
+  .logo a {
+    background: url(../images/logo/lotte_GRS_logo.svg) no-repeat center / contain;
+  }
+
+  /* footer */
+  #lt-footer {
+    padding: 10rem 0 ;
+    background-size: 55% auto;
+  }
+  .footer-logo img {
+    height: 3.8rem;
+  }
+  .footer-address p,
+  .footer-cert dt,
+  .footer-cert dd {
+    font-size: 1.4rem;
+  }
+  .footer-copy {
+    font-size: 1.2rem !important;
+  }
+  .footer-nav {
+    flex-direction: row;
+    gap: 1.2rem;
+  }
+  .footer-nav-btn {
+    font-size: 1.6rem;
+    width: 12rem;
+    padding: 0.7rem 3rem;
+  }
+}
+
+/* 4. only tb (768px ~ 1279px) */
+@media screen and (min-width: 768px) and (max-width: 1279px) {}
+
+/* 5. laptop 1280~ */
+@media screen and (min-width: 1280px) {
+  .wrap {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 6rem;
+  }
+  #lt-header {
+    height: 9rem;
+  }
+  .logo {
+    width: 20rem;
+  }
+  .sitemap-btn {
+    display: none;
+  }
+  #lt-gnb {
+    position: absolute;
+    display: flex;
+    left: 50%;
+    top: 50%;                  /* header-container 기준 수직 중앙 */
+    right: auto;
+    width: auto;
+    height: auto;              /* 모바일 height: 100% 리셋 */
+    transform: translate(-50%, -70%);
+    align-items: center;
+    background: transparent;
+    overflow: visible;
+    padding: 0;                /* 모바일 padding 리셋 */
+  }
+  #lt-gnb::before {
+    display: none;
+  }
+  .gnb-list {
+    flex-direction: row;
+    align-items: center;
+    gap: 5rem;
+    flex-grow: 0;              /* 모바일 flex-grow: 1 리셋 */
+  }
+  .depth1 {
+    position: relative;
+    width: auto;
+    margin-bottom: 0;
+  }
+  .depth1 > a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.3s;
+  }
+  .depth1:hover > a {
+    color: var(--primary-red);
+  }
+  .depth2 {
+    position: absolute;
+    top: calc(100% - 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    min-width: 15rem;
+    padding: 1.8rem 2rem;
+    border-radius: 2rem;
+    background-color: rgba(20,20,20,0.92);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+  }
+  .depth1:hover .depth2 {
+    opacity: 1;
+    visibility: visible;
+    top: calc(100% + 0.5rem);
+  }
+  .depth2 a {
+    padding: 0.6rem 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    transition: 0.3s;
+  }
+  .depth2 a:hover {
+    color: var(--primary-red);
+    font-weight: 700;
+  }
+  /* header-container가 flex라 자연스럽게 오른쪽 끝에 위치 */
+  .lang-wrap {
+    display: flex;
+    position: static;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    transform: none;
+  }
+  .lang-btn-box {
+    display: flex;
+    position: relative;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    width: 11rem;
+    overflow: visible;
+    transform: none;
+    transition: (--transition);         /* common.css overflow:hidden 리셋 */
+  }
+  .lang-btn-box.open {
+    transform: none;
+    justify-content: flex-start;
+  }
+  .ico-arrow::before {
+    content: '\e313';
+    font-family: var(--google-icon);
+  }
+  .lang-btn-box.open .ico-arrow {
+    transform: rotate(180deg);
+  }
+  .lang-current {
+    flex-shrink: 0;
+    min-height: 4rem;
+  }
+  .lang-list-inner {
+    padding-top: 0;
+    padding-bottom: 1rem;
+  }
+
+  /* footer */
+  #lt-footer {
+    padding: 10rem 0 15rem;
+    background-size: 50% auto;
+    background-position: right -2% center;
+    flex-direction: row;           /* PC: 좌우 2단 */
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .footer-info {
+    gap: 2.4rem;
+  }
+  .footer-logo img {
+    height: 4.4rem;
+  }
+  .footer-container {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .footer-nav {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2rem;
+    flex-shrink: 0;
+  }
+  .footer-nav-btn {
+    font-size: 1.7rem;
+    padding: 1rem 0;
+    width: 15rem;
+    text-align: center;
+    border-radius: 0.6rem;
+  }
+}
+
+/* 5-2. laptop 1440~ */
+@media screen and (min-width: 1440px) {}
+
+/* 6. laptop 1921~ */
+@media screen and (min-width: 1921px) {
+  .wrap {
+    max-width: 2440px;
+    margin: 0 auto;
+    padding: 0 7rem;
+  }
+}

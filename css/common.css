@@ -1,0 +1,510 @@
+@charset 'utf-8';
+/* 1. 웹폰트 연결 */
+@import url('webfonts.css');
+
+/* 변수 */
+:root {
+  --primary-red: #E60012; /* 롯데 GRS 메인 컬러 */
+  --black-font: #222;
+  --black: #111;
+  --white: #fff;
+  --font-main: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  --google-icon: 'Material Symbols Rounded';
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 2. 초기화 */
+::selection{
+  background: var(--primary-red); 
+  color:#fff;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:after, *:before {
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+}
+body {
+  position: relative;
+  background-color: #fff;
+  font-family: var(--font-main);
+  font-size: 1.7rem;
+  color: var(--black-font);
+  line-height: 1.6;
+  word-break: keep-all;
+}
+body:after { /* 모달창 */
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0.9;
+  content: '';
+  z-index: 100;
+}
+body.fixed { /* 문서를 덮는 모달창이 등장했을 때 아래쪽 문서의 내용이 스크롤 되면 안 됨 */
+  overflow: hidden;
+}
+body.fixed:after { /* 모달창 표시 */
+  display: block;
+}
+ol, ul {
+  list-style-type: none; 
+}
+a {
+  color: var(--black-font);
+  text-decoration: none;
+}
+img, iframe, video {
+  vertical-align: middle;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td, th {
+  border: 1px solid #ddd;
+  border-width: 0px 1px 1px 0px
+}
+td:last-child, th:last-child {
+  border-right-width: 0;
+}
+iframe {
+  border: 0;
+}
+input, button {
+  border: 0;
+  font-family: var(--font-main);
+  font-size: 1em;
+  color: var(--black-font);
+  background-color: transparent;
+  vertical-align: middle;
+  cursor: pointer;
+}
+input:focus, button:focus {
+  outline: 0;
+}
+
+/* 3. 공용클래스 */
+
+.wrap { /* 사이트 공통 너비 */
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+}
+.sound-only { 
+  position: absolute; 
+  left: -9999em;
+}
+.wh, .wh a {color: #fff;}
+.bk, .bk a {color: #000;}
+.primary-color, .primary-color a {color: var(--primary-color);}
+.primary-bg-color {background-color: var(--primary-color); color: #fff;}
+.pretendard {font-family: 'Pretendard Variable', sans-serif;}
+
+/* 버튼 및 공용 요소 */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.8em; /* 폰트 사이즈에 비례한 높이 */
+  padding: 0 1.5em;
+  border-radius: 1.4em;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background-color: var(--primary-red);
+  transition: var(--transition);
+}
+.btn-arrow {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5em;
+  height: 2.5em;
+}
+.btn-arrow:before {
+  content: '\e315';
+  font-family: var(--google-icon);
+  font-size: 1.2em;
+}
+.round-box {
+  margin: 3em 0;
+  padding: 1.5em;
+  border-radius: 1.5em;
+  background-color: #fff;
+  box-shadow: 0 0 1.2em rgba(0,0,0,0.1);
+}
+
+/* 1. 헤더 디자인 */
+#lt-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 6rem;
+  background-color: transparent;
+  transition: var(--transition);
+}
+
+/* 밝은 배경용 헤더 */
+#lt-header.header-dark .depth1 > a,
+#lt-header.header-dark .ico-arrow::before  {
+  color: #222;
+}
+#lt-header.header-dark .lang-btn-box {
+  color: #222;
+  border-color: rgba(0,0,0,0.15);
+}
+#lt-header.header-dark .sitemap-btn:before,
+#lt-header.header-dark .sitemap-btn:after {
+  background-color: #222;
+}
+
+/* 어두운 배경용 헤더 */
+#lt-header.header-light .depth1 > a {
+  color: #fff;
+}
+#lt-header.header-light .lang-btn-box {
+  border-color: rgba(255,255,255,0.2);
+}
+
+.header-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  position: relative;
+  display: flex;
+  width: 4rem;
+  flex: 0 0 auto;
+  z-index: 1200;
+}
+.logo a {
+  display: block;
+  width: 100%;
+  height: 4rem;
+  background: url('../images/logo/lotte_logo.svg') no-repeat center / contain;
+}
+#lt-gnb {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  right: -100%; /* 모바일 사이트맵 숨김 -100% */
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-red);
+  padding: 8rem 2rem 10rem;
+  transition: right 0.4s ease-in-out;
+  z-index: 1100;
+  overflow-y: auto;
+}
+#lt-gnb.active {
+  right: 0;
+}
+#lt-gnb::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background-color: rgba(0, 0, 0, 0.14);
+  pointer-events: none;
+}
+.gnb-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* 중앙 정렬 */
+  flex-grow: 1;
+  z-index: 1;
+}
+.depth1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.depth1 a {
+  display: block;
+  padding: 1rem 0;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.depth2 {
+  display: none; /* 클릭 시 열림 */
+}
+.depth2 li {}
+.depth2 a {
+  padding: 0.5rem 0;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8)
+}
+
+/* 언어 선택 메뉴 */
+.util-menu {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+/* 모바일: 기본 숨김, 사이트맵 열릴 때 gnb 위에 fixed로 올림 */
+.lang-wrap {
+  display: none;
+}
+body.fixed .lang-wrap {
+  display: block;
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
+  z-index: 1200; /* #lt-gnb z-index(1100)보다 위 */
+}
+
+/* 언어 선택 박스 */
+.lang-btn-box {
+  display: flex;
+  flex-direction: column; /* 리스트를 버튼 위로 쌓기 위해 */
+  width: 11rem;
+  background-color: transparent;
+  border: 1.5px solid #fff;
+  color: #fff;
+  border-radius: 2.2rem;
+  overflow: visible;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+/* 토글 시(open 클래스) 배경색 및 모서리 변화 */
+.lang-btn-box.open {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+}
+.lang-list-inner {
+  display: none;
+  width: 100%;
+  padding-top: 1rem;
+}
+.lang-list-inner li {
+  width: 100%;
+  text-align: left;
+  padding-left: 2.2rem;
+}
+.lang-list-inner li a {
+  display: block;
+  padding: 0.4rem 0;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #fff;
+}
+.lang-current {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 4rem; /* 버튼 기본 높이 */
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.lang-current .lang-lang-txt {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #fff;
+}
+/* --- 언어 선택 화살표 (수정) --- */
+.ico-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+/* 구글 아이콘 주입 (수정) */
+.ico-arrow::before {
+  content: '\e316';
+  font-family: var(--google-icon);
+  font-size: 2.2rem;
+  color: #fff;
+  display: block;
+}
+.lang-btn-box.open .ico-arrow {
+  transform: rotate(180deg);
+}
+
+/* 사이트맵 + 닫기 버튼 */
+.sitemap-btn {
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  z-index: 2200; /* 최상단 레이어 */
+  background: none;
+  border: none;
+}
+.sitemap-btn:before,
+.sitemap-btn:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+.sitemap-btn:before { top: 0.8rem; }
+.sitemap-btn:after { bottom: 0.8rem; }
+
+/* 닫기 버튼(X자) 변형 로직 */
+body.fixed .sitemap-btn:before {
+  transform: translateY(0.6rem) rotate(45deg);
+}
+body.fixed .sitemap-btn:after {
+  transform: translateY(-0.6rem) rotate(-45deg);
+}
+
+
+/* ============================================================
+  [ CSS ] Footer
+  ============================================================ */
+ 
+#lt-footer {
+  position: relative;
+  padding: 10rem 0 6rem;
+  background-color: #000;
+  overflow: hidden;
+}
+ 
+/* 웨이브 배경 이미지 */
+#lt-footer:before {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 130%;
+  height: 110%;
+  background-image: url('../images/footer/background.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0.5;
+  transform: translate(-50%, -50%);
+  content: '';
+}
+ 
+/* 컨테이너: 좌우 2단 */
+.footer-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+ 
+/* ---- 좌측 정보 영역 ---- */
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+ 
+/* 로고 */
+.footer-logo {
+  margin: 0;
+}
+ 
+.footer-logo img {
+  height: 3.2rem;
+  width: auto;
+  display: block;
+}
+ 
+/* 주소 */
+.footer-address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+ 
+.footer-address p {
+  font-size: 1.2rem;
+  color: #ccc;
+  line-height: 1.7;
+}
+ 
+.footer-copy {
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
+  color: #ccc;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+ 
+/* 인증 정보 */
+.footer-cert {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+ 
+.footer-cert-row {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+}
+ 
+.footer-cert dt {
+  font-size: 1.2rem;
+  color: #bbb;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+ 
+.footer-cert dd {
+  font-size: 1.2rem;
+  color: #aaa;
+  line-height: 1.6;
+}
+ 
+/* ---- 우측 네비 버튼 ---- */
+.footer-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+ 
+.footer-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  padding: 0.7rem 0;
+  background-color: var(--primary-red);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-radius: 0.4rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+ 
+.footer-nav-btn:hover {
+  background-color: #c00;
+  transform: translateY(-2px);
+}

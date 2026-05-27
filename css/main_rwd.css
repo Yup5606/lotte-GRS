@@ -1,0 +1,481 @@
+@charset 'utf-8';
+/* 1. mo tiny */
+@media screen and (max-width: 360px) {}
+
+/* 2. mo */
+@media screen and (max-width: 767px) {}
+
+/* 3. tb~ */
+@media screen and (min-width: 768px) {
+  .wrap {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+  }
+  .main-section {
+    padding: 0;
+  }
+  /* 히어로 영역 */
+  .v-txt{
+    padding: 2rem 3rem;
+  }
+  .txt {
+    font-size: 5.4rem;
+  }
+  /* GRS 브랜드 소개영역 */
+  .brand-container {
+    padding: 0 3rem;
+  }
+  .brand-copy {
+    top: 50px;
+    padding-bottom: 80px;
+    font-size: 3rem; 
+    line-height: 1.4;
+  }
+  .highlight {
+    font-size: 3.6rem;
+  }
+  .brand-card {
+    top: 20rem;
+  }
+  .card-title {
+    font-size: 4rem;
+    line-height: 1.2;
+  }
+  .card-title p {
+    font-size: 8rem;
+    font-weight: 600;
+  }
+
+  /* 소속 브랜드 영역 */
+  .ib-tab-btn {
+    font-size: 1.6rem;
+    padding: 1.6rem 2.3rem;
+  }
+  .ib-visual {
+    height: 44rem;
+  }
+  .ib-food-wrap {
+    width: 40rem;
+    height: 40rem;
+  }
+  .ib-tagline {
+    font-size: 1.9rem;
+  }
+  .ib-sub {
+    font-size: 1.5rem;
+  }
+  .ib-stats {
+    font-size: 1.6rem;
+  }
+  .stat-item strong {
+    font-size: 1.9rem;
+  }
+
+  /* esg */
+  .esg-stack {
+    --esg-label-h: 11rem;
+    --esg-card-h: 60rem;
+    height: calc((var(--esg-label-h) * 2) + var(--esg-card-h));
+  }
+
+  .esg-card {
+    height: var(--esg-card-h);
+    padding: 4rem;
+    border-radius: 0 8rem 0 0;
+  }
+
+  .esg-card-label {
+    font-size: 4.4rem;
+  }
+
+  .esg-card-inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    margin-top: 6rem;
+  }
+
+  .esg-img-wrap {
+    flex: 0 0 48%;
+    width: auto;
+    height: 30rem;
+    border-radius: 0;
+  }
+
+  .esg-content {
+    flex: 1;
+  }
+
+  .esg-content-tag {
+    font-size: 2rem;
+  }
+
+  .esg-figures {
+    gap: 3.6rem;
+  }
+
+  .esg-figure p {
+    font-size: 2rem;
+  }
+
+  .esg-num {
+    font-size: 4.8rem;
+  }
+
+  .esg-fig-label {
+    font-size: 1.2rem;
+  }
+
+  .esg-body {
+    font-size: 1.4rem;
+  }
+
+
+  /* 뉴스 영역 */
+  .news-title {
+    font-size: 5rem;
+  }
+  .news-filter-btn {
+    font-size: 2rem;
+  }
+  /* 태블릿+: swiper 유지, 버튼은 항상 표시 */
+  .news-grid {
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+  }
+  .news-grid .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+    max-width: none;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .news-swiper-nav {
+    display: flex;
+  }
+
+  .news-category,
+  .news-date {
+    font-size: 1.3rem;
+  }
+  .news-ttl {
+    font-size: 1.7rem;
+  }
+
+
+  /* 컨텍트 영역 */
+  .contact-word {
+    font-size: 6rem;
+  }
+  .contact-cta {
+    gap: 2.4rem;
+  }
+  .contact-btn {
+    padding: 0.2rem 1.5rem;
+  }
+
+}
+
+/* 4. only tb */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .main-section-visual, .main-container {}
+  .main-section-visual .swiper-horizontal > .swiper-pagination-bullets, 
+  .main-section-visual .swiper-pagination-bullets, .swiper-pagination-horizontal,
+  .main-section-visual .swiper-pagination-custom, .swiper-pagination-fraction{
+    left: 4.5rem;
+  }
+}
+
+/* 5. laptop 1280~ */
+@media screen and (min-width: 1280px) {
+  .wrap {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 6rem;
+  }
+  .main-section-visual, .main-section-cs {
+    padding: 0;
+  }
+  .v-txt{
+    padding: 0 6rem;
+  }
+  .txt {
+    font-size: 7.5rem;
+  }
+  .scroll {
+    right: 9.6rem;
+    bottom: 10%;
+  }
+  .main-section-visual, .main-container {}
+  .main-section-visual .swiper-horizontal > .swiper-pagination-bullets, 
+  .main-section-visual .swiper-pagination-bullets, .swiper-pagination-horizontal,
+  .main-section-visual .swiper-pagination-custom, .swiper-pagination-fraction{
+    left: 8rem;
+  }
+
+  /* GRS 브랜드 소개 영역 - PC 2컬럼 레이아웃 */
+  .main-brand {
+    padding-top: 0;
+  }
+
+  .brand-container {
+    max-width: 1920px;
+    padding: 20rem 6rem;
+  }
+
+  .brand-card-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 왼쪽 카피 | 오른쪽 카드 */
+    grid-template-rows: auto;
+    align-items: start;
+    gap: 0;
+    padding-bottom: 0;
+  }
+
+  /* 왼쪽: 카피 고정 */
+  .brand-copy {
+    top: 50%;
+    padding: 0;
+    align-self: start;
+    grid-column: 1;
+    grid-row: 1 / 7;
+    font-size: 3.6rem;
+    transform: translateY(-50%);
+    z-index: 100;
+  }
+
+  .highlight {
+    font-size: 4.4rem;
+  }
+
+  .brand-card-wrapper {
+    gap: 3rem;
+  }
+
+  /* 오른쪽: 카드들 일반 흐름 (스크롤됨) */
+  .brand-card {
+    grid-column: 2;
+    position: relative; /* sticky 해제 */
+    top: auto;
+    width: 70%;
+    height: 50rem;
+    margin-bottom: 2rem;
+  }
+  /* 호버 시 레이아웃 변경 */
+  .brand-card:hover .card-title {
+    right: 0;
+    top: 15%;
+    transform: translate(-45%, -45%);
+    text-align: left;
+    font-size: 3rem;
+    color: var(--primary-red);
+  }
+  .brand-card:nth-child(3):hover .card-title {
+    top: 15%;
+  }
+
+  /* 3, 4, 5번 카드 호버 시 타이틀만 더 위로 */
+  .brand-card:nth-child(4):hover .card-title, 
+  .brand-card:nth-child(5):hover .card-title,
+  .brand-card:nth-child(6):hover .card-title {
+    top: 10%;
+  }
+  .brand-card:hover:before {
+    position: absolute;
+    display: block;
+    content: '';
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--white);
+    transition: opacity 0.3s ease;
+    opacity: 0.3;
+    z-index: 1;
+  }
+
+  /* 소속 브랜드 영역 */
+  .main-inner-brand {
+    padding: 0;
+  }
+  .inner-brand-container {
+    padding: 0 !important;
+  }
+  .ib-tab-btn {
+    padding: 2.4rem 5rem;
+    font-size: 2rem;
+    border-bottom: 3px solid transparent;
+  }
+  .ib-tab-item.active .ib-tab-btn {
+    font-weight: 700;
+  }
+  .ib-panels {
+    margin-bottom: 8rem;
+  }
+  .ib-visual {
+    height: 56rem;
+  }
+  .ib-food-wrap {
+    width: 50rem;
+    height: 50rem;
+  }
+  .ib-desc {
+    padding: 4rem 6rem 7rem;
+  }
+  .ib-tagline {
+    font-size: 3rem;
+  }
+  .ib-sub {
+    font-size: 2rem;
+  }
+  .ib-stats {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-top: 1.6rem;
+    gap: 2rem 0;
+  }
+  .stat-item strong {
+    font-size: 3.5rem;
+    margin: 0 1rem;
+  }
+
+  /* esg */
+  .esg-stack {
+    --esg-label-h: 16rem;
+    --esg-card-h: 75rem;
+  }
+
+  .esg-card {
+    padding: 6rem;
+    border-radius: 0 12rem 0 0;
+  }
+
+  .esg-card-label {
+    font-size: 5rem;
+  }
+
+  .esg-card-inner {
+    gap: 7rem;
+    margin-top: 5rem;
+  }
+
+  .esg-img-wrap {
+    flex: 0 0 46%;
+    height: 34rem;
+  }
+
+  .esg-content-tag {
+    font-size: 2.4rem;
+  }
+
+  .esg-figures {
+    gap: 6rem;
+  }
+
+  .esg-figure p {
+    font-size: 3rem;
+  }
+
+  .esg-num {
+    font-size: 6.5rem;
+  }
+
+  .esg-fig-label {
+    font-size: 1.7rem;
+  }
+
+  .esg-body {
+    max-width: 56rem;
+    font-size: 1.9rem;
+  }
+
+  /* news */
+  .main-news {
+    padding: 10rem 0;
+  }
+  .news-container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 6rem;
+  }
+  .news-aside {
+    position: sticky;
+    flex: 0 0 22rem;
+    top: 14rem;
+    overflow: visible;
+  }
+  .news-grid {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  .news-title {
+    font-size: 4.4rem;
+  }
+  .news-filter-list {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .news-filter-btn {
+    font-size: 2.4rem;
+    font-weight: 500;
+  }
+  .news-swiper-nav {
+    /* margin-top: 3.2rem; */
+    gap: 1.2rem;
+  }
+  .news-swiper-prev,
+  .news-swiper-next {
+    width: 5.6rem;
+    height: 5.6rem;
+    font-size: 2.6rem;
+  }
+  .news-grid .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+  }
+  .news-grid .swiper-slide {
+    flex-shrink: 0;
+    max-width: none;
+    height: auto;
+  }
+  .news-thumb {
+    margin-bottom: 1.6rem;
+  }
+  .news-category,
+  .news-date {
+    font-size: 1.4rem;
+  }
+  .news-card.hidden {
+    display: none !important;
+  }
+  .news-ttl {
+    font-size: 1.8rem;
+  }
+
+  /* 컨텍트 영역 */
+  .contact-container {
+    gap: 7rem;
+    padding: 25rem 0; 
+  }
+  .contact-title-wrap {
+    gap: 1rem;
+  }
+  .contact-word {
+    font-size: 10rem;
+  }
+  .contact-btn {
+    font-size: 1.7rem;
+    padding: 0.2rem 2rem;
+    border-radius: 0.6rem;
+  }
+  .contact-btn:hover .arrow-line {
+    width: 3.6rem;
+  }
+}
+
+/* 5. laptop 1440~ */
+@media screen and (min-width: 1440px) {}
+
+/* 6. laptop 1921~ */
+@media screen and (min-width: 1921px) {}
