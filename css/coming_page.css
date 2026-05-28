@@ -36,6 +36,65 @@
   line-height: 1.7;
 }
 
+.coming-btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 160px;
+  height: 48px;
+  padding: 0 24px;
+  /* border: 1px solid var(--primary-red); */
+  border-radius: 999px;
+  color: #fff;
+  font-family: var(--primary-font);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  transform: translateY(0);
+}
+.coming-btn::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 100%;
+  background-color: var(--primary-red);
+  transform: translate(-50%, -50%);
+  transition: width 0.35s ease;
+  z-index: -1;
+}
+.coming-btn:hover {
+  color: #fff;
+}
+.coming-btn:hover::after {
+  width: 100%;
+}
+
+/* 애니메이션 */
+@keyframes readyFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes readyBgZoom {
+  0% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
 /* 1. mo tiny */
 @media screen and (max-width: 360px) {
   .coming-sec h2 {
@@ -62,13 +121,6 @@
 
   .coming-desc {
     font-size: 1.8rem;
-  }
-
-  .coming-btn {
-    min-width: 15rem;
-    height: 5.4rem;
-    border-radius: 2.7rem;
-    font-size: 1.6rem;
   }
 }
 
