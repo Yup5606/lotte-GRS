@@ -49,6 +49,31 @@ LOTTE GRS의 기업 아이덴티티를 강화하고
 
 ---
 
+
+## 빠른 설정표
+
+| 영역 | 원하는 결과 | 변경할 값 |
+|---|---|---|
+| 01·02·04 | 텍스트만 | `tech-section--text` |
+| 01·02·04 | 텍스트 + 이미지 | `tech-section--media` |
+| 01·02·04 | 이미지만 | `tech-section--image` |
+
+| 03 | 기본 회색 | 모든 TRL에서 `checked` 제거 |
+| 03 | 특정 단계까지 파란색 | 해당 라디오에 `checked` 추가 |
+
+| 05 | 텍스트 카드 1개 | `data-layout="text" data-count="1"` |
+| 05 | 이미지 카드 1개 | `data-layout="media" data-count="1"` |
+| 05 | 이미지 카드 4개 | `data-layout="media" data-count="4"` |
+
+| 06 | 텍스트 + 차트 | `tech-section--media` |
+| 06 | 텍스트만 | `tech-section--text` |
+| 06 | 차트만 | `tech-section--image` |
+
+| 07 | 권리 정보 1건 | `data-count="1"` |
+| 07 | 권리 정보 3건 | `data-count="3"` |
+| 07 | 추가 권리 안내 포함 | `data-count="more"` |
+
+
 ## What I Learned
 
 - 기업 홈페이지 UX 설계
